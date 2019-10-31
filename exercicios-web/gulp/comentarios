@@ -1,0 +1,15 @@
+    1º baixo a pasta gulp do professor no link
+http://files.cod3r.com.br/curso-web/gulp.zip
+dentro da pasta exercicios-web. Dentro dela
+vem o package.json do professor com todas as dependencias e
+versoes ja estabelecidas. É importante nao mecher nelas para 
+nao correr o risco de atrapalhar a execucao do programa.  
+
+     Para instalar o framework gulp, preciso faze-lo de forma global.
+Entao no terminal na pasta exercicios-web executo o comando
+'npm i -g gulp-cli'. Depois entro na pasta gulp e executo o 
+comando 'npm i' para instalar as dependencias que o professor escreveu
+no arquivo package.json. Pronto!!!
+
+    Agora para executar o gulp é so escrever 'gulp' no terminal dentro da 
+pasta que esta o arquivo desejado para execucao.

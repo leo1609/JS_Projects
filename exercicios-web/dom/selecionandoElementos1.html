@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        // selecionei o elemento na DOM pelo id e adicionei em sua 
+        //lista de classes a classe destaque que esta na pasta 
+        //estil.css
+        document.getElementById('primeiro').classList.add('destaque')
+        //pega todas as tags de nome div e insere na const divs
+        const divs = document.getElementsByTagName('div')
+        //trasformei uma coleção de HTMLS(divs) em um array para 
+        //fazer um foreach e remover a classe destaque da div que 
+        //o tiver
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))
+        //outra forma de colocar um HTML colection em um array
+        const divsArray = [...divs]
+        //adicionei a classe destaque em todas as divs
+        divsArray.forEach(e => e.classList.add('destaque'))
+        //crei um HTML colection em ultimoselementos que pega os elementos
+        //que tem a classe ultimo
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        //consigo percorrer usando o for HTML colection. Neste caso eu
+        //removi a classe 'destaque' do elemento que tinha a classe ultimo
+        for(let e of ultimosElementos){
+            e.classList.remove('destaque')
+        }
+        //forEach nao funciona com HTML colection. O for funciona
+    </script>
+</body>
+</html>

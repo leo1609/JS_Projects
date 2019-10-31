@@ -1,0 +1,51 @@
+<h1>Projeto</h1>
+<ul class="tree">
+    <li>
+        <span pasta>Backend</span> 
+        <ul>
+            <li>
+                <span pasta>App</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda</li>
+                </ul>
+            </li>
+            <li>
+                <span pasta>Config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span pasta>Frontend</span>
+        <ul>
+            <span pasta>Public</span>
+            <ul>
+                <li>app.css</li>
+                <li>app.js</li>
+                <li>index.html</li>
+            </ul>
+        </ul>
+    </li>
+</ul>
+
+<!--link css do professor-->
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+
+<!--'ul.style.display' retorna 'block' se visivel ou 'none' se invisivel
+    'display === 'none' se display é igual a 'none' retorna 'block' senão
+                        retorna 'none' -->
+<script>
+    document.querySelectorAll('[pasta]').forEach(pasta => {
+        pasta.onclick = function(e){
+            const ul = pasta.nextElementSibling
+            const display = ul.style.display
+            ul.style.display = display === 'none' ? 'block' : 'none'
+        }
+    })
+</script>

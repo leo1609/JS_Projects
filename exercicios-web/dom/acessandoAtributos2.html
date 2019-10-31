@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <!--existe ligeira diferenca com atributos criados iniciando com
+        "data-" de atributos sem esse 'data-' -->
+        <ul id="compras" destino='escritório' data-urgencia="5"
+        data-blabla="opa">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        // é o mesmo que pegar pelo id ('compras')
+        const lista = document.querySelector('div ul[destino="escritório"]')
+
+        console.log('Elementos "ul".....................')
+        //retorna um nodelist com textos e elementos
+        console.log('childnodes', lista.childNodes)
+        //retorna o valor de id porque id é uma palavra reservada do js
+        console.log('destino', lista.id)
+        //assim funciona tambem
+        console.log('destino1', lista.getAttribute('id'))
+        //ja destino nao é uma palavra reservada do js e nao retornara o valor
+        //de destino
+        console.log('destino2', lista.destino)
+        //para conseguir isso preciso do getAttribute
+        console.log('getAttribute', lista.getAttribute('destino'))
+        //verifica se o atributo esta dentro de lista
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+        //muda o valor do atributo destino para empresa
+        lista.setAttribute('destino', 'empresa')
+        //neste caso esta inserindo um novo atributo com
+        //valor aberto
+        lista.setAttribute('status','aberto')
+
+        lista.removeAttribute('destino')
+
+        //traz todos os atributos e seus valores que tem o 'data-'
+        console.log(lista.dataset)
+        //traz somente o valor do atributo urgencia
+        console.log(lista.dataset.urgencia)
+        //muda o valor do atributo urgencia
+        lista.dataset.urgencia = 4
+        //nao funciona porque nao usei dataset
+        //console.log(lista.data-urgencia)
+        //agora funciona com dataset ou getAttribute
+        console.log(lista.getAttribute('data-urgencia'))
+        
+        //cuidado
+        const label = document.querySelector('label')
+        //nao pega o atributo 'for' porque é uma palavra reservada do 'js'
+        console.log(label.for)
+        //assim funciona
+        console.log(label.htmlFor)
+        //assim tambem
+        console.log(label.getAttribute('for'))
+        //nao funciona
+        console.log(label.getAttribute('htmlFor'))
+
+
+    </script>
+</body>
+
+</html>

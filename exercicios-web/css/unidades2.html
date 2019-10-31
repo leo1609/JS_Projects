@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #02</title>
+    <style>
+        /* altura da div aumenta conforme o elemento que esta dentro */
+        .fora{
+            /*tenho que usar relative aqui para o absolute funcionar
+            na classe de dentro, senao a classe de dentro so ira se
+            basear na viewport*/
+            position: relative;
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            padding: 50px;
+
+        }
+
+    .dentro{
+        background-color: mediumvioletred;
+        height: 100px;
+        width: 100%;
+        /*position padrao é sempre o static. Se eu nao escrever static
+        sempre o sera. O static ocupa o conteudo*/
+        position: static;
+        /*espaco do conteudo*/
+        /*position: relative;*/
+        /*conteudo + o padding*/
+        position: absolute;
+        /*tamanho baseado na viewport - tela*/
+        /*position: fixed;*/
+    }
+    </style>
+</head>
+<body>
+    <div class="fora">
+        <div class="dentro"></div>
+    </div>
+</body>
+</html>

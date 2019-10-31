@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        //esta forma de requisição ajax é uma forma mais manual e antiga
+        //outras formas sao melhores e automaticas como usando
+        // o axios, jquery, fetch e outras. O axios e fetch sao bibliotecas
+        //especificas para fazer requisições ajax, ja o jquery é mais
+        //generalista e faz um monte de coisas alem do ajax
+        //o ajax faz requisiçoes sem precisar recarregar a pagina de forma
+        //assincrona e utiliza xml como tipo de dados para fazer as requisições
+        // config é um parametro objeto onde tera como atributo url e chamada de 
+        //metodos pra mandar mensagens de sucesso e erro 
+        function ajax(config){
+            //criei um objeto xml, O 'XMLHttpRequest objeto' pode ser usado para trocar dados com um servidor da web
+            // nos bastidores. Isso significa que é possível atualizar partes de uma página da web,
+            // sem recarregar a página inteira. A pedra angular do AJAX é o objeto XMLHttpRequest.
+            const xhr = new XMLHttpRequest()
+            //a funcao 'open' - especifica se a requisicao é do tipo get ou post, dependendo do que estiver
+            //dentro do atributo 'config.metodo', a url da requisicao dentro do atributo 'config.url'
+            // e  se for 'true' significa que sera uma requisicao que sera feita de forma 
+            //assincrona, false seria sincrona
+            xhr.open(config.metodo, config.url, true)
+            //onload é uma propriedade do 'xmlhttprequest' que recebe uma funcao, que só é disparado quando termina o
+            //carregamento da resposta da requisicao
+            xhr.onload = e => {
+                //se o status for 200 ou seja bem sucedida
+                if(xhr.status === 200){
+                    //sucesso é a funcao que retornara a mensagem de sucesso,
+                    //neste caso a mensagem sao os dados requeridos em formato string 
+                    config.sucesso(xhr.response)
+                    //se houver um erro do cliente ou servidor(erro entre 400 e 500)
+                }else if(xhr.status >= 400){
+                    //a funcao erro ira receber um codigo de erro(status) e um
+                    //texto explicando o erro (statusText)
+                    confige.erro({
+                        code: xhr.status,
+                        text: xhr.statusText
+                    })
+                }
+            }
+            //chamada de funcao que vai enviar a requisicao desta função ajax para o servidor
+            xhr.send()
+        }
+        //aqui é a chamada da funcao ajax, fazendo uma requisicao ao servidor, atraves
+        //de um objeto com varios de seus atributos e valores
+        ajax ({
+            //este endereco tem um Array de Estados brasileiros na pasta dados
+            //que serao retornados na requisição
+            url:"dados/estados.json",
+            //
+            metodo: "get",
+            //
+            sucesso(resposta){
+                //console.log(typeof(resposta))
+                //transformo o formato string, que veio do parametro resposta, em um Array de objetos.
+                const estados = JSON.parse(resposta)
+                //console.log(typeof(estados))
+                //criando a tabela com suas colunas 'td' e linhas 'tr'
+                const linhas = estados.map(estado => {
+                    const tdId = document.createElement('td')
+                    tdId.innerHTML = estado.id
+                    const tdNome = document.createElement('td')
+                    tdNome.innerHTML = estado.nome
+                    const tdSigla = document.createElement('td')
+                    tdSigla.innerHTML = estado.sigla
+
+                    const tr = document.createElement('tr')
+
+                    tr.appendChild(tdId)
+                    tr.appendChild(tdNome)
+                    tr.appendChild(tdSigla)
+                    return tr
+                })
+                const tabela = document.createElement('table')
+                linhas.forEach(linha => tabela.appendChild(linha) )
+
+                document.body.appendChild(tabela)
+            },
+
+            erro(e){
+                const mensagem = document.createTextNode(`${e.code}: ${e.text}`)
+                document.body.appendChild(mensagem)
+            }
+        })
+    </script>
+</body>

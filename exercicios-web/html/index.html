@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercicios HTML</title>
+    <style>
+    #conteudo {
+        padding: 30px 0px
+    }
+    </style>
+</head>
+<body>
+    <header>
+        Exercicios HTML
+    </header>
+    <nav>
+        <a href nomeAtributo="exercicios/teste.html">00 - Teste</a><br>
+        <a href nomeAtributo="exercicios/texto1.html">01 - Texto1</a><br>
+        <a href nomeAtributo="exercicios/texto2.html">02 - Texto2</a><br>
+        <a href nomeAtributo="exercicios/listas.html">03 - Listas</a><br>
+        <a href nomeAtributo="exercicios/listaAninhada.html">04 - Lista Aninhada</a><br>
+        <a href nomeAtributo="exercicios/links.html">05 - Links</a><br>
+        <a href nomeAtributo="exercicios/tabela.html">06 - Tabela</a><br>
+        <a href nomeAtributo="exercicios/form/form.html">07 - Formulario</a><br>
+        <a href nomeAtributo="exercicios/imagens.html">08 - Imagens</a><br>
+        <a href nomeAtributo="exercicios/video.html">09 - Video</a><br>
+        <a href nomeAtributo="exercicios/tagsNaoVisuais.html">10 - Tags Nao Visuais</a>
+
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <br>
+        curso de web moderno
+    </footer>
+    <!-- 'querySelectorAll('[nomeAtributo])' traz uma lista de tags 'a',
+    'document.getElementById('conteudo')' atribui o id conteudo da 
+    seção para a constante conteudo,
+    'onclick' tem o objetivo de pegar o click da tela para o servidor 
+    fazer o link e nao o browser atraves do link 'a'. 
+    'e.preventDefault()' ira previnir de fazer um acesso padrao e 
+    ficar parado ate executar o link pelo fetch.
+    'fetch' é uma promisse que faz a chamada AJAX. 
+    'link.getAttribute('nomeAtributo')' referencia o link que esta na tag 'a'. 
+    'resp => resp.text()' é uma função que retorna uma promisse com o
+    html da pagina que fiz a requisição. 
+    'html => conteudo.innerHTML = html' essa função pega o html do link
+    e substitui-o pelo html da pagina que eu estou clicando no link -->
+    <script>
+        document.querySelectorAll('[nomeAtributo]').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+            
+            link.onclick = function(e){
+                e.preventDefault()
+
+                fetch(link.getAttribute('nomeAtributo'))
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+                    
+            }
+        })
+    </script>
+</body>
+</html>

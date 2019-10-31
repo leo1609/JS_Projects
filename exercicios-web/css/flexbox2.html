@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* ... */
+        .flex-container div{
+            box-sizing: border-box;
+        }
+
+        .flex-container{
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3){
+            background-color: indianred;
+            /*todos tem ordem 0. Quem tem ordem maior sera 
+            exibido por ultimo.*/
+            order: 1;
+            order: -1;
+            /*alinha texto no centro*/
+            align-self: center;
+            align-self: flex-end;
+            align-self: flex-start;
+            /*padrao*/
+            align-self: stretch;
+
+        }
+        .flex-container div{
+            width: 100px;
+            /*todas as divs ficam com 100px ainda e sobram 200px*/
+            flex-grow: 0;
+            /*todos iram crescer ate ocupar os 200px que estao sobrando*/
+            flex-grow: 1;
+        }
+        .flex-container div:nth-child(1){
+            /*o espaco desse é maior porque é flex 2*/
+            flex-grow: 2;
+        }
+        .flex-container{
+            width: 300px;
+            /*todos encolhem equivalente ao tamnho 300px*/
+            flex-shrink: 1;
+        }
+        .flex-container div:nth-child(1){
+            /*ira encolher o espaco que deve ser encolhido*/
+            flex-shrink: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

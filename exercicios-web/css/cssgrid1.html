@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #01</title>
+    <style>
+        /* https://caniuse.com/#feat=css-grid */
+        
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 5px dodgerblue;
+            background: #fff;
+        }
+        body{
+            display: grid;
+            /*separa em duas colunas com 50% cada*/
+            grid-template-columns: 50% 50%;
+            /*12 colunas de 8.33% cada*/
+            grid-template-columns: repeat(12, 8.33% );
+            /*3 vezes 4 colunas com 8.33% cada, da no mesmo
+            que acima*/
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%);
+            /*4 colunas com 8.33% cada*/
+            grid-template-columns: repeat(4, 8.33%);
+            /*agrupei 11 colunasde 100px com uma ultima coluna de 100px*/
+            grid-template-columns: repeat(11, 100px) 100px;
+            /*minmax(100px, 300px)*/
+            /*1º coluna pega 200px, 2º pega 20% e 3º pega 1 
+            fragmento do resto que esta sobrando*/
+            grid-template-columns: 200px 20% 1fr;
+            /*muito bom pra trabalhar*/
+            grid-template-columns: 3fr 6fr 3fr;
+            /*1º linha tem 50% e as outra é a mesma logica*/
+            grid-template-rows: 50% 25% 12.5% 12.5%;
+            /*1º linha tem 100px 2º tem todo o resto e a 3 e 4º
+            tem somente a altura necessaria pra renderizar os numeros*/
+            grid-template-rows: 100px 1fr;
+            /*1º com 100px e as outras repartiram o espaco por igual*/
+            grid-template-rows: 100px auto auto auto;
+
+        }
+        .d8{
+            /*a div 8 ocupara o espaco que comeca na coluna 2 e 
+            termina na coluna 4 */
+            grid-column-start: 2;
+            grid-column-end: 4;
+            /*mesmo resultado do acima. Comeca na casa que esta e
+            termina duas linhas de coluna para o lado*/
+            grid-column-end: span 2;
+            /*comeca na linha 3 e termina na linha 5 das linhas*/
+            grid-row-start: 3;
+            grid-row-end: 5;
+            /*mesmo que acima*/
+            grid-row-end: span 2;
+        }
+        .d10, .d11{
+            /*podem se sobrepor*/
+            grid-column-start: 1;
+            grid-column-end: 3;
+            /*o 11 esta sobreposto em cima do 10*/
+            grid-row-start: 5;
+        }
+        .d10{
+            /*o d10 vai agora sobrepor ao d11 porque ele tem
+            o z-index maior de todos. '0' é igual a todos e 
+            '-1' menor que todos*/
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div>
+    <div class="d6">6</div>
+    <div class="d7">7</div>
+    <div class="d8">8</div>
+    <div class="d9">9</div>
+    <div class="d10">10</div>
+    <div class="d11">11</div>
+    <div class="d12">12</div>
+</body>
+
+</html>

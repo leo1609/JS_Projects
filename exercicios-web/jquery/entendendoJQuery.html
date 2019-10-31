@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Entendendo jQuery</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <!--jquery foi baixado do site dele e salvo nesta pasata abaixo-->
+    <script src="js/jquery.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Entendendo jQuery</h1>
+    <div>1</div>
+    <div>2</div>
+
+    <script>
+        //nao preciso usar for e getElement para selecionar 
+        //elementos da dom. Quando se seleciona um elemento da dom via jquery, o jquery tem dentro dele objetos que referenciam
+        // o elemento da dom e dentro deste objetos tem varias funcoes que manipulam o elemento selecionado. Esse metodo nao é 
+        //baseado em heranca e sim em 'decorator'. Se eu quiser pegar o elemento da dom tenho que usar a funcao get(), ai consigo
+        //pega-lo.
+        //jquery é referenciado pelo '$' ou 'jQuery' com 'Q' maisculo.
+        //selecionei as 'divs' e apliquei a funcao 'hide'
+        //de esconder as divs em 5 segundos e show para 
+        //apresentar em 5 segundos. 'fadeOut(5000)' esconde a 
+        //divs de forma diferente em 5 sec.
+        //Esse encadeamento de funcoes so é possivel porque casa funcao dessa
+        //retorna o objeto this
+        $('div').hide(5000).show(5000).fadeOut(5000)
+        //
+        console.log($('div').get(0))
+        //verfica se um objeto é vazio. retorna true
+        console.log($.isEmptyObject({}))
+        //retorna false
+        console.log($.isEmptyObject({nome: null}))
+        //o numero 3 esta dentro do array?
+        // se sim retorna o indice onde ele esta
+        //se nao retorna -1
+        console.log($.inArray(4, [1, 2, 3]))
+        
+        //com o fn eu posso criar funcoes no jquery
+        $.fn.fundoverde = function(){
+            this.css('background-color', 'green')
+            //preciso retornar o objeto, senao nao consigo usar outra funcao
+            //em cima dele.
+            return this
+        }
+        //sem eu retornar o objeto acima nao consigo usar o fadeOut, que sera usado
+        //para esconder o conteudo do body em 2 sec.
+        $('body').fundoverde().fadeOut(2000)
+
+    </script>
+</body>

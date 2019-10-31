@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        //document.forms traz um array de todos os formularios 
+        //do tipo HTML colection
+        console.log(document.forms)
+        //traz o form de indice 0
+        console.log(document.forms[0])
+        //pega  forms que tem o name pesquisa. Retorna um array de 
+        //HTML colection
+        console.log(document.getElementsByName('pesquisa'))
+        //traz forms em array do tipo nodelist
+        console.log(document.getElementsByTagName('form'))
+        //é uma bosta as funçoes acima porque retorna 
+        //diferentes tipos.
+        //muito simples. pega elemento pelo nome
+        console.log(document.pesquisa)
+        //pega o input com name 'q'
+        console.log(document.pesquisa.q)
+        //coloca uma palavra no campo do imput para ser pesquisada.
+        //neste caso a palavra é 'linux'
+        document.pesquisa.q.value = 'linux'
+        //esolhe o valor en-us no select
+        document.pesquisa.hl.value = 'en-us'
+        //retorna o option que esta selecionado o select
+        console.log(document.pesquisa.hl.selectedIndex)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        //funcao para fazer console.log()
+        //nao pode ser uma funcao 'arrow' porque o this iria
+        //apontar para window.
+        function log(){
+             console.log(this)
+        }
+        //como estou criando um novo 'console.log' preciso inserir o 
+        //tipo de retorno que essa nova funcao 'log()' suporta, pois o
+        //console.log suportava todos os tipos de retorno, ou seja console.log
+        //estava era funcao em quase todos os tipos de objeto 
+        //desta forma estou colocando na lista de funcoes(prototype)
+        // do objeto 'HTMLCollection' a funcao log
+        HTMLCollection.prototype.log = log
+        //o mesmo para esse objeto
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+        
+        //aqui eu peguei a 'ul', a lista
+        const lista = document.querySelector('div ul')
+        //parentnode pega o pai da lista, a div
+        lista.parentNode.log()
+        //traz os filhos mas os textos, que sao espacos que 
+        //existem entre linhas
+        lista.childNodes.log()
+        //pega o primeiro filho da lista
+        const primeiro = lista.firstChild
+        primeiro.log()
+        //pega o proximo irmao
+        primeiro.nextSibling.log()
+        //pega o ultimo filho
+        const ultimo = lista.lastChild
+        ultimo.log()
+        //pega o antepenultimo irmao
+        ultimo.previousSibling.log()
+
+        //pega todos os filhos sem os espacos vazios entre linhas 
+        //retorna HTMLCollection
+        lista.children.log()
+        //traz 1º filho tag e nao texto
+        lista.firstElementChild.log()
+        //traz ultima tag filho
+        lista.lastElementChild.log()
+        //pega o que estiver antes do pai, neste caso é um
+        // espaco vazio (espaco entre linhas) (texto)
+        lista.parentNode.previousSibling.log()
+        //este pega a tag antes do pai
+        lista.parentNode.previousElementSibling.log()
+        //traz a proxima tag irma do pai de lista
+        lista.parentNode.nextElementSibling.log()
+
+        //mais prudente, entendivel, facil, manutenivel e simples
+        //de usar o querySelectorAll. Recomendacao do professor
+        //retorna um objeto do tipo nodelist
+        document.querySelectorAll('div ul li').log() 
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+Instalei o arquivo package.json com o comando 'npm init -y' na pasta 'webpack'
+
+Troquei o name do arquivo package.json de 'webpack para 'capitulo-webpack', 
+porque pode haver confusao com o nome da pasta webpack.
+
+Apaguei o script de 'test' e coloquei o de "start": "webpack" .
+
+Coloquei as devDependencies inicias 'webpack' e webpck-cli e instalei com o comando
+'npm i'.
+
+"sass-loader" é uma dependencia que nao funciona sem o  "node-sass".
+    

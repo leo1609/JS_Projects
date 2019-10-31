@@ -1,0 +1,45 @@
+/*:root é uma pseudo-classe do css, que serve para que possa
+declarar variaveis que eu criei*/
+:root{
+    /*variaveis sao criadas com '--'*/
+    --bg-button: #f0f0f0;
+    --border-button: solid 1px #888;
+}
+
+.button{
+    font-size: 1.4em;
+    /*pela funcao 'var' eu consigo usar a variavel qu eue criei*/
+    background-color: var(--bg-button);
+    border: none;
+    border-right: var(--border-button);
+    border-bottom: var(--border-button);
+    /*'outline' é uma luz que aparece ao redor do botao quando apertado.
+    Neste caso eu desliguei ele */
+    outline: none;
+}
+/*quando o botao for clicado*/
+.button:active{
+    background-color: #ccc;
+}
+/*botao que ocuparam dois espacos*/
+.button.double{
+    grid-column: span 2;
+}
+
+.button.triple{
+    grid-column: span 3;
+}
+/*cor dos botoes de operacao*/
+.button.operation{
+    background-color: #fab231;
+    color: #FFF;
+}
+
+.button.operation:active{
+    background-color: #fa8231cc;
+}
+
+
+
+
+

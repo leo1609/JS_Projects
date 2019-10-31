@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        // 
+        const item = document.querySelector('div')
+        //para conseguir posicionar a div no html de forma absoluta 
+        item.style.position = 'absolute'
+
+        item.onmousemove = e => {
+            //colocar o cursor cruz quando o mouse passa por cima da div
+            item.style.cursor = 'move'
+            //se foi clicado 'true'
+            if(e.buttons){
+                //'item' é o mesmo que e.traget, ou seja que a 'div'
+                // item.style.top - modificarei o top da div com o mouse
+                //e.clientY - onde o cursor esta na vertical da tela em px
+                //item.clientWeight - altura da div
+                //dividido por 2 a altura da div para o cursor, quando clicado,
+                //se posicionar no meio da div. Sem a divisao o curso fica sempre 
+                //na parte de baixo da div, independente se clicar em cima da div
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                //neste console da pra ver os pixels aumentando e diminuindo
+                console.log(e.clientY)
+                item.style.left = `${e.clientX - (item.clientWidth / 2) }px`
+            }
+        }
+    </script>
+</body>

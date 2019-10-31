@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tamanho Box</title>
+    <style>
+        *{
+            /*se eu colocar o box-sizing dentro do body ele nao funcionara
+            para todos os componentes, porque é uma propriedade que não é 
+            transmitida por herança. Para isso tenho que coloca-lo dentro
+            do seletor universal ('*'). */
+            /*content box - a largura fica contida do conteudo para dentro*/
+            box-sizing: content-box;
+            /*border box - a largura fica contida da borda para dentro */
+            box-sizing: border-box;
+        }
+        body {
+            font-size: 45px;
+            margin: 0;
+        }
+        div{
+            background-color: deepskyblue;
+            width: 100%;
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;   
+        }
+    </style>
+</head>
+<body>
+    <div>
+        O tamanho do Box é...
+    </div>
+</body>
+</html>

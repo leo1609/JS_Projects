@@ -1,0 +1,8 @@
+#textoprincipal {
+    font-size: 40px;
+    font-weight: bold;
+    background-color: rgba(150, 127, 255, 0.37);
+    padding: 10px;
+    color: #fcf804;
+    margin-bottom: 50px;
+}

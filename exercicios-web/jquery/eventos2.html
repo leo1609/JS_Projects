@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #02</h1>
+    <div id='div1'>1</div>
+    <div id="resultado1">?</div>
+    <br>
+    <input type="text" placeholder="Digite e Selecione">
+    <div id="resultado2">?</div>
+    <script>
+        //
+        const alternarDestaque = () => $('#div1').toggleClass('destaque')
+        //quando o mouse passar por cima da div, adiciona destaque
+        //quando sair, retira o destaque
+        //$('#div1').on('mouseenter mouseleave', alternarDestaque)
+        //sentencas abaixo faz a mesma coisa que de acima
+        //$('#div1').mouseenter(alternarDestaque)
+        //$('#div1').mouseleave(alternarDestaque)
+        //posso chamar outra funcao como parametro do hover
+        $('#div1').hover(alternarDestaque, alternarDestaque)
+ 
+        //evento que é disparado uma unica vez
+        $('#div1').one('mouseenter', e => alert('IMPORTANTE: Voce é muito curioso!!!!!!!!!!!!!!1'))
+
+        //se eu fizer duplo clique sobre a div, ela desaparecera em 1 sec
+        //e retornara em 1 sec
+        $('#div1').dblclick(e => $('#div1').fadeOut(1000).fadeIn(1000))
+
+        //resize monitara se o elemento foi redimencionado
+        $(window).resize(function(e){
+            const l = $(window).width()
+            const a = $(window).height()
+            $('#resultado1').html(`Largura: ${l} e Altura: ${a}`)
+        })
+
+        //quando selecionar algo escrito dentro do input
+        $('input').select(e => {
+            //pega o indice inicial da 1º letra da selecao
+            const inicio = e.target.selectionStart
+            //pega o indice final da ultima letra da selecao
+            const fim = e.target.selectionEnd
+            
+            //e.target.value == $('input').val() == $(this).val()
+            //o this nao funciona aqui porque esta funcao é arrow e 
+            //arrow nao aceita o 'this'.
+            //substring() retorna tudo que estiver entre o indice do inicio e fim
+            $('#resultado2').html($('input').val().substring(inicio, fim))
+            
+        })
+
+
+
+
+
+    </script>
+</body>

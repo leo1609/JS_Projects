@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <div id='cliques'>Cliques: 0</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        //essa funcao mostrara na div com o id posicao, a posicao do mouse
+        function mostrarPosicaoDoMouse(e){
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+        //'on' registra uma funcao quando um evento acontece
+        //o evento do 'on' 'mousemove', dispara a funcao abaixo sempre quando
+        //houver mudanca na posicao do mouse.
+        $('body').on('mousemove', mostrarPosicaoDoMouse)
+
+        //se eu passar o mouse em cima da div ele desliga o 'mousemove'
+        $('#posicao').mouseover(e => {
+              //off - desregistra a funcao
+              $('body').off('mousemove', mostrarPosicaoDoMouse)
+        })
+
+        //se eu tirar o mouse de cima da div ele votara a registrar o mouse
+        $('#posicao').mouseleave(e => {
+            //faz a mesma coisa usando o on
+            $('body').mousemove(mostrarPosicaoDoMouse)
+        })
+
+        let cliques = 0
+        //evento click monitora os cliques
+        $('body').click(e => {
+            $('#cliques').html(`cliques: ${++cliques}`)
+        })
+
+        //pega a cor do body
+        const backgroundOriginal = $('body').css('background-color')
+
+        //o evento keyup monitara o que esta sendo escrito no input
+        $('input').keyup(function (e) {
+            //faz o mesmo que o val()
+            const valor1 = e.target.value
+            //console.log(valor1)
+
+            //'this' é o input, se fizer uma funcao arrow o 'this' nao funciona,
+            //porque ele nao pega o 'this' global e somente o 'this' do escopo da funcao.
+            //val() - pega o valor escrito no elemento
+            const valor = $(this).val()
+            //console.log(valor)
+            //se valor que foi escrito no 'input' for igual(match) a alguma codigo de cor
+            //e.x:(#fff - branco), validado pela expressao regular abaixo, trocara a cor da tela
+            if(valor.match(/#[\da-fA-F]{3,6}/)){
+                $('body').css('background-color', valor)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
+    </script>
+</body>

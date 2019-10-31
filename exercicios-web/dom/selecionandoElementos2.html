@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="ultimo terceiro ">
+        <span wb-attrib>.terceiro .ultimo</span>
+    </div>
+    <script>              
+        //preciso usar '#' porque ele espera um seletor css e neste caso
+        //estou querendo selecionar pelo ID. Com o querySelector posso 
+        //selecionar por classe, elemento, id, tag, atributo, elementos que
+        //nao tem uma determinada classe, etc. Ele é muito flexivel eo '#' é
+        //para identificar que é um ID
+        document.querySelector('#primeiro').classList.add('destaque')
+        //querySelector nao retorna um HTML colection ele retorna um nodeList
+        //que tem a função forEach. Dependendo da situação, pois tem funcoes que
+        //nao funcionam com nodelist, sera necessario converte-lo para um Array
+        const selecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => 
+            e.classList.add('destaque'))
+        //seleciona os elementos que serao passados no parametro
+        const deselecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e =>
+            e.classList.remove('destaque'))
+
+        selecionar('div') 
+        //deseleciono todos pelo seletor universal
+        deselecionar('*')   
+        //seleciono a dive que tem as classes "terceiro" e "ultimo" nao 
+        //importa a ordem
+        selecionar('.terceiro.ultimo')
+        selecionar('span')
+
+        deselecionar('*')
+        //a pseudo classe not nega o id, ou seja seleciona todos menos
+        //o id
+        selecionar(':not(#primeiro)')
+        deselecionar('*')
+        //seleciona o 1º elemento filho do body e o 1º (span) de uma div
+        selecionar(':nth-child(1)')
+        deselecionar('*')
+        //pega o primeiro elemento filho do tipo 'div'
+        selecionar('div:nth-child(1)')
+        deselecionar('*')
+        //seleciona pelo atributo
+        selecionar('[wb-attrib]')
+    </script>
+</body>
+</html>

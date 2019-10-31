@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        //forma mais eficiente de obter a lista é pelo valor do 'id'
+        const lista = document.querySelector('#compras')
+        
+        //somente para leitura
+        console.log(lista.attributes)
+        //pega o 1º elemento da lista de atributos
+        console.log(lista.attributes[0])
+        //funciona com id tambem
+        console.log(lista.attributes.id)
+        //pega somente o atributo
+        console.log(lista.attributes.destino)
+        //nao funciona porque a notacao data sem colchetes confunde
+        //o js, ele pensa que é sinal de negacao
+        //console.log(lista.attributes.data-urgencia)
+        //assim funciona porque vem entre colchetes
+        console.log(lista.attributes['data-urgencia'])
+        //atributes é somente para leitura. Ele nao altera o Html na pagina
+        //Na inspeção ele aparece no console mas nao altera no html
+        console.log(lista.attributes.destino = 'casa')
+
+
+    </script>
+</body>
+
+</html>

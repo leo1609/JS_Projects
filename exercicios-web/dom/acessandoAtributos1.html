@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        // 'img' seleciono uma tag
+        // '.img'    "      "  classe
+        // '#img'    "      "   id
+        // '[img]'   "      "   atributo
+        const img = document.querySelector('img')
+        //getAttibute eu acesso o atributo(src) da tag 'img'
+        //estou passando junto no console log uma string (getAttribute)
+        //para marcar o que estou lendo na inspeção do browser
+        console.log('getAttribute', img.getAttribute('src'))
+        //faz o mesmo que o acima, a diferenca é que o de cima acessa
+        //o atributo escrevendo string e o de baixo acessa 
+        //de fato pelo atributo. Certas ocasioes é necessario o getAttribute
+        //porque vc acessaria pelo nome do atributo e nao pelo atributo 
+        console.log('src', img.src)
+        //outra forma de acessar o atributo pelo nome como o getAttribute
+        console.log('["src"]', img['src'])
+        //retorna o valor do atributo alt
+        console.log('alt', img.alt)
+
+        console.log('Elemento "img"................................')
+        //todos elementos e atributos tem propriedades implicitas, uma delas
+        //é o nodetype, que neste caso retorna '1' que significa que isto é
+        //um elemento. O '2' é um atributo
+        console.log('NodeType', img.nodeType)
+        //traz o nome do tipo deste elemento
+        console.log('NodeName', img.nodeName)
+        //pega o nó que representa o atributo do parametro enviado
+        const src = img.getAttributeNode('src') 
+        
+        console.log('Atributo "src"........................')
+        //retorna um numero que significa o que é o tipo de elemento
+        //que foi retornado, neste caso '2' para atributo
+        console.log('NodeType', src.nodeType)
+        console.log('NodeName', src.nodeName)
+        //traz o valor que esta associado ao nó
+        console.log('NodeValue', src.nodeValue)
+        //pego o link 'a'
+        const link = document.querySelector('a')
+        console.log('Elemento "a".....................')
+        console.log('href', link.href)
+        //traz o nodetype do 1º filho do link 'a'
+        //neste caso traz tipo 3 ou seja tipo texto
+        console.log('firstChild.nodeType', link.firstChild.nodeType)
+        //desta forma eu substitui o texto antigo 'cod3r' por 'novo texto'
+        link.firstChild.nodeValue = 'novo texto'
+        //faz a mesma coisa que acima só que com outra função
+        link.innerHTML = 'novo texto 2'
+    </script>
+</body>
+
+</html>

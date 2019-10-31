@@ -1,0 +1,17 @@
+dentro do terminal do projeto eu preciso primeiro fazer o comando
+npm init -y para criar o json do projeto 'package.json'
+e somente depois eu posso baixar as dependencias e
+a pasta node_modules atraves do comando
+npm i --save express@4.16.2 -E. Neste caso ele
+irá baixar node_modules junto com o express versao
+4.16.2. O '-E' serve para o editor nao atualizar
+o express e sempre mante-lo na versao exata que o professor
+esta dando o curso. Isso é feito para não ter 
+problemas na hora que o professor efetuar um comando
+de uma versao diferente que foi atualizado pelo editor
+
+Para fazer o post eu preciso baixar uma dependencia 
+chamada body-parser para o servidor pegar o json que 
+vem do browser e transformalo em objeto. O comando 
+utilizado na pasta projeto do terminal foi 
+npm i --save body-parser@1.18.2 -E

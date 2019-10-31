@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+        
+        /*é acionado abaixo de 700px*/
+        @media(max-width: 700px){
+          .muito-pequeno{display: block;}
+        }
+        /*se uma condição ou a outra for true o display funciona*/
+        @media(max-width:1000px), (orientation: portrait){
+            .pequeno-retrato{display: block;}
+        }
+        /*condição com 'and'*/
+        @media(min-width: 600px) and (max-width: 1000px){
+            .intervalo{
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

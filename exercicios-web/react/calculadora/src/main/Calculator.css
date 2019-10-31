@@ -1,0 +1,15 @@
+.calculator{
+    height: 320px;
+    width: 235px;
+    border-radius: 5px;
+    /*'overflow' - tudo que estiver para alem da calculadora estara escondido.
+    Ou seja, os numeros muito grandes nao saem pra fora da calculadora*/
+    overflow: hidden;
+
+    display: grid;
+    /*divide a div calculator em 4 colunas com 25% cada de largura*/
+    grid-template-columns:repeat(4, 25%);
+    /*altura das 6 linhas: um pega linha pega o que sobra do 
+    tamanho da div (1fr), as outras 5 sao de 48 px*/
+    grid-template-rows: 1fr 48px 48px 48px 48px 48px;
+}

@@ -1,0 +1,19 @@
+    Para instalar o react no  node é preciso entrar na pasta react, pasta essa que eu criei
+e utilizar o comando no terminal 'npm i -g create-react-app'. O react usa por baixo dele
+o webpack entao nao é necessario criar a build, pois essa pasta ja vem configurada no react,
+nao sendo necessario configurar o webpack.
+
+    Para criar o projeto react utilizo o comando 'create-react-app exercicios'. Ele cria uma 
+aplicaçao basica para iniciar a construcao do projeto.
+
+Quando se cria o projeto react ele vem com uma pasta src dentro da pasta exercicos. Para fazer a aula
+nós excluimos essa pasta src para podermos construi-la novamente e aprender como o react funciona.
+
+    Para startar  o projeto é so entrar na pasta exercicios e executar o 
+comando 'npm start'. Abrira uma pagina no browser no 'localhost:3000'. Essa pagina vira
+com o emblema do react e com um link para vc acessar a pagina do framework react, onde tem 
+o manual de utilizacao da ferramenta.
+
+    Como eu apaguei o src entao a pagina ira abrir com erro.
+    Quando eu quiser fazer o build do projeto é so utlizar o comando
+'npm run build' na pasta exercicios dentro da pasta react no terminal

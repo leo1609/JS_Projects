@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <style>
+        /* ... */
+        body{
+            background-color: aquamarine;
+        }
+    </style>
+    <!--'rel' define o tipo de relacao que o arquivo 'css/externo.css
+    tem com essa pagina. Tem que ter o 'rel' senao
+    nao funciona. A prioridade, se é o arquivo ou o style
+    acima, é pela ordem de execução, como o link é o ultimo
+    a ser processado entao é ele que sera executado-->
+    <link rel="stylesheet" href="css/externo.css">
+</head>
+
+<!--nao é apropriado colocar style inline na tag, vira bagunça
+este tem preferencia em relacao ao css externo e interno para ser 
+executado-->
+<body style="background-color: coral">
+    <h1>E agora?</h1>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+header.header{
+    background-color: #FFF;
+    padding: 0px 15px;
+    /*'overflow' serve para quando diminuir a tela o subtitulo
+    nao desaparecera e nao quebrara a linha misturando com 
+    a tag conteudo.*/
+    overflow: hidden;
+    /* 'white-space' serve para quando diminuir a tela o subtitulo
+    nao desaparecera palavra por palavra e sim de uma vez. */
+    white-space: nowrap;
+    box-shadow: var(--shadow);
+}
+
+/*diminuir o tamanho da fonte do h1*/
+header.header h1{
+    font-size: 1.8em;
+}

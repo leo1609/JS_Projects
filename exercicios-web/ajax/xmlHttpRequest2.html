@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        input[type=file] {
+            display: flex;
+            margin: 10px;
+            padding: 40px;
+            font-size: 40px;
+            background: crimson;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <input type="file" name="arquivo" />
+    <div class="progresso"></div>
+
+    <script>
+        // 
+        function ajaxUpload(config){
+            const xhr = new XMLHttpRequest()
+
+            if(xhr.upload){
+                //onprogress é uma propriedade que fica monitorando o progresso
+                //do upload 
+                xhr.upload.onprogress = e => {
+                    //loaded - dados que foram carregados
+                    const atual = e.loaded
+                    //valor total
+                    const total = e.total
+                    const percentual = Math.floor(atual / total * 100)
+                    config.progresso({atual, total, percentual})
+                }
+            }
+
+            xhr.open("post", config.url, true)
+            //chamada de funcao que enviara os dados da web para o servidor 
+            xhr.send(config.formData)
+        }
+        
+        //onchange fica monitorando se ouve um click no input, quando isso acontece
+        //dispara a função 
+        document.querySelector('input[type=file]').onchange = e => {
+            const formData = new FormData()
+            //o formData recebera o nome do arquivo baixado e primeiro arquivo de indice 0
+            formData.append(e.target.name, e.target.files[0])
+
+            ajaxUpload({
+                url: "upload",
+                formData: formData,
+                progresso(dados){
+                    const progresso = document.querySelector('.progresso')
+                    //pego o objeto dados e converto ele pra string
+                    progresso.innerHTML = JSON.stringify(dados)
+                }
+            })
+        }
+    </script>
+</body>

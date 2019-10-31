@@ -1,0 +1,16 @@
+//com os imports abaixo consigo gerar o css necessario 
+
+//esse '~' serve para referenciar que o import ira procurar o 
+//endereco dentro da pasta node_modules. Neste caso estou importando
+//todas as bibliotecas que serao importantes e que estao dentro do
+//bootstrap.scss
+@import "~bootstrap/scss/bootstrap";
+
+//aqui tenho que referencia nesta variavel do scss '$fa-font-path' (serve para identificar
+//para o scss onde esta o diretorio das fontes), o caminho do diretorio 'font-awsome/fonts'.
+$fa-font-path: "~font-awesome/fonts";
+//fazendo o import das fonts do arquivo 'font-awesome.scss'
+@import "~font-awesome/scss/font-awesome";
+
+//import dos scss cunstomizados pelo professor no arquivo 'custom.scss'
+@import "custom";

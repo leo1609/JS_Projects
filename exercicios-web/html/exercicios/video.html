@@ -1,0 +1,65 @@
+<!--'source' tem a opcao de se um video nao funcionar
+ele pula para a proxima linha a procura de um video novo
+se nao achar ele emiti a mensagem abaixo -->
+<!--'controls' permiti mostrar os controles do video
+    'autoplay' da play automatico no video
+    'controlsList' esconde o icone de download do controle do video.
+     Não existe nehuma forma de executar video de forma remota , sempre
+    o video é executado em seu pc na memoria RAM. Se quiser grava-lo
+    no disco rigido tambem pode-->
+<video id="meuvideo" width='800' height='450' controls autoplay controlsList="nodownload" >
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    seu browser nao suporta este video
+</video>
+
+<div progresso="meuvideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button play='meuvideo'>Play</button>
+    <button pause='meuvideo'>Pause</button>
+</div>
+
+<style>
+    .progresso{
+        height: 20px;
+        width: 500px;
+        border: solid 1px rgb(243, 81, 6);
+        margin: 20px;
+        margin-left: 0px;
+    }
+    .progresso > div {
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+    }
+</style>
+
+<script>
+    function configurarvideo(id){
+        const video = document.getElementById(id)
+        //nao mostra a opcao de menu quando clicar encima do video
+        video.oncontextmenu = () => false
+        
+        //chamadas de funções que ficam verificando clicks sobre os botoes
+        //(onclick), para efetuar play ou pause do video
+        document.querySelector(`[play=${id}]`).onclick = e => video.play()
+        document.querySelector(`[pause=${id}]`).onclick = e => video.pause()
+    
+        //pega a div que esta dentro da div progresso
+        const valordiv = document.querySelector(`[progresso=${id}] > div`)
+        function cenario() {
+            percentual = (video.currentTime / video.duration) * 100
+            valordiv.style.width = percentual + '%';
+            valordiv.innerHTML = percentual.toFixed(1) + '%'  
+            
+        }
+        //chamada de função que executa a função cenario a cada 0.5 seg
+        setInterval(cenario, 500); 
+    }
+
+    configurarvideo('meuvideo')
+</script>

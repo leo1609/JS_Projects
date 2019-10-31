@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        //
+        function ajax(config){
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+            //evento
+            xhr.onreadystatechange = e => {
+                //se o readystate for 4 é porque o carregamento esta pronto
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200){
+                        //essa resposta vem em formato xml
+                        config.sucesso(xhr.responseXML)
+                    } else if(xhr.status >= 400){
+                         config.erro({
+                             codigo: xhr.status,
+                             texto: xhr. statusText
+                         })
+                    }
+                }
+            }
+            xhr.send()
+        }
+
+        ajax({
+            url: "dados/estados.xml",
+            metodo: "get",
+            sucesso(resposta){
+                //pego as tags no arquivo, neste caso as tags 'estado' e todos seus elementos
+                const estados = resposta.getElementsByTagName('estado')
+                //transformei estados em array e depois o reduce vai transformar o Array
+                //em um unico elemento string concatenando os elementos um atraz do outro
+                const itens = Array.from(estados).reduce(
+                    //html é o texto gerado, que é um acumulador
+                    // ('') esse vazio depois da virgula é o valor inicial passado para a funcao reduce
+                    //senao colocar esse vazio ele insere a string 'objectElement' no primeiro 
+                    //elemento da lista
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, ''
+                )
+                //antes de terminar o body eu insiro todos os itens 
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            },
+            erro(e){
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+                document.body.appendChild(msg)
+            }
+        })
+    </script>
+</body>

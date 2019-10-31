@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #01</title>
+    <style>
+        /* ... */
+        .unidades-absolutas{
+            /*algumas propriedades so funcionaram se a position
+            for absoluta*/
+            position: absolute;
+            font-size: 40px;
+            padding: 20px;
+            border: solid 5px #222;
+            margin: 30px;
+            width: 4cm;
+            height: 20mm;
+            /*distancia do topo da pagina*/
+            top: 150px;
+            /*distancia da esquerda da pagina*/
+            left: 200px;
+        }
+
+        .unidades-relativas{
+            position: absolute;
+            /*4 vezes o tamanho padrao do browser*/
+            font-size: 4em;
+            /*o padding varia a porcentagem em relação do 
+            valor da position. Se retirar ou colocar o padding
+            com 'px' somente a largura irá variar*/
+
+            padding: 5%;
+            /*1vw é '1/100' da largura da pagina*/
+            border: solid 1vw #222;
+            margin: .8%;
+            width: 20vw;
+            /*15vh é 15/100 da altura pa pagina*/
+            height: 15vh;
+            /*distancia do fundo*/
+            bottom: 5%;
+            /*distancia da margem direita*/
+            right: 5%;
+        }
+        .escrevendo{
+            font-size: 20%;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="unidades-absolutas">Opa!</div>
+    <div class="unidades-relativas">Epa!</div>
+</body>
+
+</html>

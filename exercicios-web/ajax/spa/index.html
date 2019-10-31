@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+        // url seria o wm-link e seletor o wm-destino
+        function navegarViaAjax(url, seletor, push = true){
+            //se nao tem url ou seletor a funcao nao vai adiaNTE
+            if(!url || !seletor) return
+
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+                //pega o conteudo da url
+                .then(resp => resp.text())
+                //insere o conteudo na div class="pagina"
+                .then(html => {
+                     elemento.innerHTML = html
+                     //se o parametro true vir true
+                     if(push){
+                         //passa o seletor pra indicar em div sera enviado os dados, neste cado 
+                         //a " div class='pagina' ".
+                         //Isso serve para poder voltar ou avancar a pagina no browser na qual
+                         //ja havia sido navegada.
+                         //Passo o titulo, que esta escrito como nulo, porem é possivel escrever qualquer
+                         //coisa que nao afetara a execucao.
+                         //Passo a url que esta a pagina atual.
+                         //Esta funcao abaixo é uma pilha que guarda o historico de navegacao. Apos sua 
+                         //execucao, a url que sera mostrada no browswer é a url do link clicado, nao mais
+                         //da pagina index.html e sim 'series.html' ou 'linguagens.html' 
+                         history.pushState({seletor}, null, url)
+                     }
+                })
+        }
+
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            const url = link.attributes['wm-link'].value
+            const seletorDestino = link.attributes['wm-destino'].value
+            //quandoo link for clicado a funcao onclick vai saber
+            link.onclick = e => {
+                //seguro a navegacao pra executar a funcao navegarviaajax()
+                e.preventDefault()
+                navegarViaAjax(url, seletorDestino)
+            }
+        })
+        //onpopstate - é um evento que escuta se as setas do cabecalho do browser
+        // foram clicadas. Ela avanca ou retrocede na pilha do historico de navegacao e
+        //navega retornando o conteudo ou avancando-o. Sem ele o conteudo fica estatico
+        //e nao muda conforme se clica nas setas
+        window.onpopstate = e => {
+            //se o e.state estiver presente
+            if(e.state){
+                //window.location.href - é a url que esta a pagina atual
+                //e.state.seletor - indica pra qual div sera enviado os dados 
+                navegarViaAjax(window.location.href, e.state.seletor, false)
+            }
+        }
+    </script>
+</body>

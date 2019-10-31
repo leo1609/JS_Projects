@@ -1,0 +1,8 @@
+    Para construir a pasta da calculadora eu nao precisei baixar o react novamente
+eu so executei o comando 'create-react-app calculadora' e entao criei a pasta.
+
+    Depois disso eu entrei neste endereco de fontes do google 'https://fonts.google.com/specimen/Roboto+Mono?selection.family=Roboto+Mono'
+para abaixar uma fonte interessante que o professor gosta de usar.
+
+    Depois criei uma pasta chamada 'Fonts' dentro de calculadora e arrastei um dos arquivos de fontes baixados do link acima
+e movi este arquivo 'RobotoMono-Thin' para esta pasta 'Fonts'.

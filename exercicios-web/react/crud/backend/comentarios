@@ -1,0 +1,39 @@
+    Neste projeto eu baixei a pasta package.json pelo comando
+'npm init -y' dentro da pasta backend e depois baixei e salvei
+dentro do arquivo package.json, as dependencias e seus pacotes
+sendo a 1º delas o json-server pelo comando 'npm i --save json-server@0.13.0 -E',
+que sera um servidor web API rest da aplicacao. Ele é otimo para projetos menores
+e serve tambem para testar projetos.
+
+   No arquivo package.json eu substitui  de dentro do objeto script o atributo teste
+pelo ' "start": "json-server --watch db.json --port 3001"', para que o json-server
+quando startado fique monitorando o arquivo que esta simulando um banco de dados,
+pelo comando '--watch db.json'. Como o teremos um backend e um frontend, tenho que avisar ao
+json-server que ficara ouvindo a porta 3001 pelo comando '--port 3001', por que por
+padrao ele escutaria a porta 3000 como o react tambem. Como terei que baixar o react
+para ele servir o frontend ele ficara ouvindo pela porta padrao 3000. Entao o json-server
+ficara ouvindo a porta 3001 e o react a porta 3000.
+
+    Apos inicializar o json-server pelo comando npm start eu posso ver a pagina no browser
+acessandoa porta localhost:3001. E se eu quizer ver o arquivo que esta simulando o banco de dados
+'db.json' é só usar o endereco 'localhost:3001/users' e entao o json-server apresentara
+o conteudo na tela do browser. Se eu utilizar o endereco 'localhost:3001/users/1' e trara o 
+usuario de id 1.
+
+    Para eu criar a pasta frontend eu fiz isso atraves do comando de dowload do react, ou seja
+quando solicitar o dowload do react ele automaticamente cria a pasta frontend pelo comando
+dentro da pasta crud 'create-react-app frontend'.
+
+    Depois de baixar o react eu escrevi nas dependencias do package.json outras bibliotecas que
+serao usadas, entre elas:
+"axios": "0.18.0", - como o servidor é um json-server sera necessario usar o axios, porque ele
+é um cliente http que faz chamadas ajax pra fazer o crud.
+"bootstrap": "4.1.1",
+"font-awesome": "4.7.0", - fonte de icones.
+"react-router": "4.2.0", - usado pra navegar entre componentes
+"react-router-dom": "4.2.2",
+
+    Apos eu escrever essas bibliotecas eu baixei dentro da pasta front todas elas pelo 
+comando 'npm i'.
+    Para startar o react é so executar o comando 'npm start' na pasta frontend e ele ficara 
+ouvindo na porta 3000.

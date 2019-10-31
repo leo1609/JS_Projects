@@ -1,0 +1,21 @@
+baixei o jquery pelo comando no terminal 'npm i --save-dev jquery@3.3.1 -E'
+Tenho que usar '-E' para identificar que a versao nao tera evolucao e sera exatamente
+essa versao 3.3.1.
+
+baixei tambem o popper pelo comando 'npm i --save-dev popper.js@1.14.3 -E'
+
+O bootstrap depende dos arquivos baixados acima.
+
+Usei o comando 'npm i' para baixar tambem o bootstrap e o http-server, que ja vieram
+escritos no package.json quando baixei a pasta bootstrap do professor.
+
+Jquery e popper nao veio escrito.
+
+As pastas minimizadas dos arquivos ja vieram baixadas pelo zip do professor.
+
+"start": "http-server . -c-1" - '-c-1' serve para executar o servidor sem utilizar
+o cash. Ou seja, se houver alguma mudanca feita no codigo nao sera necessario reinicializar
+o servidor.
+
+Para iniciar o servidor é so utilizar o comando 'npm start' que o servidor
+comeca a escutar no localhost:8080

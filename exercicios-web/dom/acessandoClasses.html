@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        //peguei a lista de classes da 'div'
+        //posso fazer assim 
+        //const classes = document.querySelector('div').classList
+        //ou assim. É mas entendivel
+        const div = document.querySelector('div')
+        const classes = div.classList
+        //adiciono a classe destaque que esta no endereco estilo.css
+        classes.add('destaque')
+
+        classes.remove('destaque')
+        //se nao existir a classe destaque na div o toggle adicionara
+        //se existir ele retirara. Toggle faz a auternancia
+        classes.toggle('destaque')
+        //retorna true ou false se a classe existir ou nao
+        console.log(classes.contains('destaque'))
+        //tamanho
+        console.log(classes.length)
+        classes.toggle('destaque')
+        //é 0 porque toggle tirou a unica classe que existia
+        console.log(classes.length)
+
+        classes.add('destaque1')
+        classes.add('destaque2')
+        console.log(classes.length)
+        //funciona com forEach
+        classes.forEach(element => {
+            console.log(element)
+        });
+        //para utilizar o map ou pop, push tenho que transforma-lo em array
+        const arraydeclasses = Array.from(classes)
+        //ou desta forma tambem tranforma em classes
+        const arraydeclasses2 = [...classes]
+        console.log('array de classes 2', arraydeclasses2)
+
+        arraydeclasses.map(e => console.log('map', e))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+para instalar o servidor node eu devo entrar no terminal
+e escrever o comando na pasta exercicios-web
+'npm i -g http-server' ira instalar de forma global
+
+para executar o servidor 'http-seerver .' no terminal 
+executara na porta 8080 automaticamente.
+Se necessario outra porta 'http-server -p 9090 por exemplo
+no browser escrever localhost:8080
+
+tive que abaixar vessao mais antiga porque nao funcionou
+o server atual. Ele da muito problema
+'npm install -g http-server@0.9.0'
+
+para retirar o cach do servidor e nao precisar fazer
+refresh na pagina apos alguma mudança, tenho que
+fazer 'http-server -c-1'

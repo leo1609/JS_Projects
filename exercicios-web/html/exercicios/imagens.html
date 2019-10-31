@@ -1,0 +1,127 @@
+<!--este exercicio so ira funcionar se o http-server for 
+executado na pasta exercicios-web/html/exercicios. O
+script daqui nao pode ser exportado para a index.html,
+por isso na funciona quando aperto o link imagem no index  -->
+<div wm-slider>
+    <p>
+        <!--'alt' serve para ser exibida como alternativa se 
+        a imagem nao aparecer, 'width' é largura da imagem e 
+        'height' é altura-->
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"
+            alt="Muro da Cidade"
+            height="342"
+            
+            title="Muro da Cidade por Tarso Bessa" >
+    </p>
+
+    <p>
+        <img src="https://images.sex.com/images/pinporn/2016/07/19/620/16177285.gif"
+            alt="Intro "  height="342">
+    </p>
+
+    <!--deixa a imagem com fundo com cor-->
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+        alt="Rio de Janeiro" width="513" height="342">
+    </p>
+
+    <p class="cidade"></p>
+
+    <p class="texto">
+        <!--A classe '.texto img' procura a tag img abaixo-->
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" 
+        alt="Avatar" height="50" align="left">
+        Texto gjgjgjggjgjgjgjgjgggjgjgjgjgjjgjgkkkkk kkkkkkkkkkkk
+        kkkkkkkkkkkkkkkkkkkkkkkkk     hhhhhhhhhhhhhhh hhhhhhhhhhh
+        gggggggggggggggggggggggggggggggggggggggggggggg gggggggggg
+        sssssssssssssssss ffffffffffffffffffffff
+    </p>
+
+    <p>
+        <!--'picture' serve pra trocar de imagem, pra maior ou menor,
+        quando a tela muda de tamanho, tablet ou mobile ou outro-->
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width: 600px)">
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png"
+            alt="logo"> 
+        </picture>
+    </p>
+
+</div>
+
+<style>
+
+    p{
+        position:absolute;
+        display: none;
+    }
+    .circular {
+        width: 513px;
+        background-color: #444
+    }
+
+    .texto {
+        width: 513px;  
+    }
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+
+</style>
+
+<script>
+    function slider(){
+        //peguei todos os p da div
+        //ele retorna um nodelist e nao um array
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        //transforma o nodelist em array
+        const slides = Array.from(elementos)
+        exibirslide(slides, slides[0])
+    }
+
+    function exibirslide(slides, slide){
+        slide.style.display = 'block'
+        
+        //largura da pagina
+        const inicio = innerWidth
+        //largura da tag 'p'
+        const fim = -slide.clientWidth
+        slide.style.left = `${inicio}px`
+
+        mover(slide, inicio, fim, 5, () => {
+            slide.style.display = 'none'
+            exibirslide(slides, getproximo(slides, slide))
+        })
+    }
+
+    function mover(elem, inicio, fim, passo, callback){
+        const novoinicio = inicio - passo
+        if(novoinicio >= fim){
+            elem.style.left = novoinicio + 'px'
+            setTimeout(() => mover(elem, novoinicio, fim, passo, callback), 7)
+        }else{
+            callback()
+        }
+    }
+
+    function getproximo(lista, atual){
+        const i = lista.indexOf(atual) + 1
+        return i < lista.length ? lista[i] : lista[0]
+    }
+
+    slider()
+
+    //peguei a primeira tag 'p'
+    //const p = document.querySelector('[wm-slider] > p')
+    //p.style.display = 'block'
+     
+    //mover(p, 1500, -520, 5, () => {
+    //    console.log("terminou")
+    //})
+</script>

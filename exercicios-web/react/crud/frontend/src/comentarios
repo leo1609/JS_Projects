@@ -1,0 +1,5 @@
+    O arquivo serviceWorker.js é baixado junto com o react e serve para
+cach de dados que sao chamados na pagina. Em vez dos dados serem buscados no BD,
+se eles ja foram utilizados uma vez, eles nao serao buscados no BD novamente
+em caso de um consulta, eles ja estarao armazenados neste arquivo e disponibilizados 
+de forma bem rapida pois ele esta na memoria RAM do pc. 

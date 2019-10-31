@@ -1,0 +1,17 @@
+    Dentro de 'tsconfig.json' tem varias especificacoes 
+
+
+especifica onde esta os arquivos typescript que serao traduzidos
+"files": [
+        "src/**/*.ts"
+    ],
+
+
+especifica qual é a pasta raiz que ser afeita a traducao
+"rootDir": "src",
+
+especifica traduzir o tipo generico typescript em any
+"noImplicitAny": true,
+
+especifica dizer para qual versao do js sera traduzido
+"target": "es5"

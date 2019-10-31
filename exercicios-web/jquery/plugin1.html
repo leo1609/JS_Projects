@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Plugin #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Plugin #01</h1>
+    <div>
+        {{ 1 + 2 }}
+        Texto 1
+        {{ 3 ** 3 }}
+        Texto 2
+        {{ console.log('Funcionou!') }}
+        Texto 3
+        {{ (function() { return 'Legal!!!' })() }}
+        Texto Final
+    </div>
+
+    <script>
+        // 
+        //const $ = {nome: 'nao é o jquery'}
+        //funcao auto invocada que recebe como parametro jQuery
+        (function ($) {
+             $.fn.interpretar = function(){
+                //funcao que retirara chaves das sentencas
+                const retirarChaves = s => s.substring(2, s.length - 2)
+                //pega o conteudo da div
+                const conteudo = $(this).html()
+                //espressoescomchaves é um array formado de sentencas com chaves
+                //ou seja foi retirado somente as expressoes que tem chave do conteudo da div,
+                //ou seja expressoes que deram match com as expressoes regulares abaixo
+                const expressoesComChaves = conteudo.match(/\{\{.+\}\}/g)
+                const conteudoSemHtml = conteudo.match(/.+/g)
+                //retirando as chaves das expressoes
+                const expressoes = expressoesComChaves.map(retirarChaves)
+                //eval recebe as expressoes do html sem as chaves e tranforma elas no 
+                //resultado das expressoes. E.x.: 1+3 retorna no html '4'
+                const resultados = expressoes.map(e => eval(e))
+
+                //neste 'for' eu inverti o texto do html para ficar em ordem ex: 'texto 1' em cima da expressao
+                for (let i = 0; i < conteudoSemHtml.length; i++){
+                    if(i % 2 === 0){
+                        let textoAtras = conteudoSemHtml[i]
+                        let textoFrente = conteudoSemHtml[i+1]
+                        conteudoSemHtml[i] = textoFrente + '<br>'
+                        conteudoSemHtml[i+1] = textoAtras 
+                    }
+                }
+                
+                //neste 'for' inseri o valor do resultado e o quebra linha
+                let cont = 0
+                for (let i = 0; i < conteudoSemHtml.length; i++){
+                    //se o elemento do array conter '{'
+                    if(conteudoSemHtml[i].indexOf('{') > -1){
+                       conteudoSemHtml[i] = conteudoSemHtml[i] + ' = ' + resultados[cont] + '<br><br>'
+                       cont++
+                    }
+                    //neste if retirei impuresas no final do array que vieram do html
+                    if(i > 7){
+                        conteudoSemHtml[i] = ''
+                    }
+                }
+                $(this).html(conteudoSemHtml)   
+            }                  
+        })(jQuery)
+
+        $('div').interpretar()
+
+
+
+
+
+    </script>
+</body>

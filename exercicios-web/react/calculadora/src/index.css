@@ -1,0 +1,28 @@
+/*importando fonte*/
+@font-face{
+  font-family: 'robotoMono';
+  src: url('./Fonts/RobotoMono-Thin.ttf');
+}
+
+*{
+  font-family: 'RobotoMono', monospace;
+}
+
+body{
+  display: flex;
+  /*pega altura toda da tela*/
+  height:100vh;
+  /*alinha elemento no eixo x no centro*/
+  justify-content: center;
+  /*alinha elemento no eixo y no centro*/
+  align-items: center;
+  /*alinha texto no eixo x*/
+  text-align: center;
+  /*cor da fonte*/
+  color: #fff;
+  /*cor da tela de fundo.
+  Essa cor podem ser verificada no site: https://uigradients.com,
+  la pode-se selecionar a cor e quando apertadar f12 (inspeção)
+  pode-se copiar (control + C) a cor do elemento dentro da inspecao*/
+  background: linear-gradient(to right, rgb(83, 105, 118), rgb(41, 46, 73))
+}

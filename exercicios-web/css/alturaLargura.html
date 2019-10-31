@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+
+        /*para a altura funcionar em '%' com a div, eu tenho que 
+        colocar altura do html e tambem do body em 100% para entao
+        a classe da div saber que agora ela nao tem mais um valor
+        relativo da pagina e sim um absoluto. Se eu colocar somente 
+        no body, nao ira funcionar porque 100% do body é ainda um valor 
+        relativo em relacao as alturas dos componentes. Porem quando o html
+        é a altura 100% indica que ele tera a altura da tela e o body
+        acompanha porque agora a altura do body é 100% do html. Trabalhar
+        com '%' requercer respeito a toda hierarquia e ficar esperto com
+        o espaço deixado entre linha no body quando
+        escrevemos os componentes. é complicado trabalhar com '%' */
+        html{
+            /*height: 100%;*/
+        }
+        body {
+            font-size: 40px;
+            background-color: coral;
+            height: 100%;
+            margin: 0;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+        /*span nao considera altura e largura porque é display inline
+        display inline-block ou block considera*/
+
+        span, div{
+            width: 50%;
+            height: 50%;
+            /*a div consirera largura em '%' porque o body tem ja a
+            largura padra da tela, porem o body nao tem a altura padrao da tela
+            e ela pode variar conforme ira variar as alturas dos componentes, entao
+            nao tenho como colocar altura em '%' de uma altura relativa e nao 
+            absoluta como é a largura do body */
+            height: 250px;
+            /*o block tranforma os componentes em blocos, portanto
+            começam a se comportar como um e nao precisa mais da altura
+            do html*/
+            display: block;
+            /*o inline block so funciona se colocar o span e a div na
+            mesma linha ou diminuir a largura desta classe pra 49%*/
+            display: inline-block;
+            /*tudo isso muda se utilizar o position: ablsoute ou outro*/
+        }
+    </style>
+</head>
+
+<body>
+    <!-- entre uma linha e outra existe um espaço, entao pra funcionar a
+        largura de 50% na classe dos componentes,é necessario tirar o 
+        espaco colocando os componentes na mesma linha, entao os blocos
+        caberam na tela pois terao 50% cada-->
+    <div>Título</div><span>Subtítulo</span>
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando Atributos</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        [wm-relogio] {
+            text-align: center;
+        }
+
+        [wm-relogio] button {
+            font-size: 1.6em;
+            padding: 0px 25px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando Atributos</h1>
+    <div wm-relogio='1000'></div>
+    <script>
+        //
+        function Relogio(elemento){
+            //pega o horario string do brasil
+            const horaCerta = $('<p>').html(new Date().toLocaleString('pt-BR'))
+            const botaoMenos = $('<button>').html('-')
+            const botaoMais = $('<button>').html('+') 
+            const intervalo = $('<p>').html('1').append(' segundo')
+
+            //este elemento é da dom e foi pega pela funcao each()
+            //preciso transforma-lo em elemento do jquery, por isso
+            //a sentenca abaixo
+            const $elemento = $(elemento)
+            $elemento.append(horaCerta, botaoMenos, botaoMais, intervalo)
+
+             //pega o valor do atributo do $elemento jquery e transforma em inteiro
+            const getIntervaloAtual = () => {
+
+                const segundo = parseInt($elemento.attr('wm-relogio')) 
+                //mostra o intervalo em segundos que o relogio sera atualizado
+                if(segundo === 1000){
+                    intervalo.html((segundo * 0.001).toString()).append(' segundo')
+                } else{
+                    intervalo.html((segundo * 0.001).toString()).append(' segundos')
+                }
+                
+                return segundo
+            }
+
+            let temporizador = null
+
+            const iniciar = () => {
+                //se houver numero no temporizador, ele limpa o temporizador
+                if(temporizador) clearInterval(temporizador)
+
+                temporizador = setInterval(() => {
+                    horaCerta.html(new Date().toLocaleString('pt-BR'))
+
+                    //le de quanto em quanto tempo a funcao setInterval() sera disparada
+                }, getIntervaloAtual());
+            }
+
+            const alterarIntervalo = delta => {
+                //Math.max - pega o maior valor entre os dois parametros
+                const novo = Math.max(getIntervaloAtual() + delta, 1000)
+                //o atributo do elemento recebe o novo valor
+                $elemento.attr('wm-relogio', novo)
+                iniciar()
+            }
+            //monitora se o botao foi clicado. Se foi, tira 1 sec.
+            botaoMenos.click(e => alterarIntervalo(-1000))
+            botaoMais.click(e => alterarIntervalo(1000))
+            iniciar()
+        }
+        //   Dispara a funcao each() e cria-se um novo relogio, passando como
+        //parametro a div da dom na qual o seletor atributo faz parte.
+        //$('[wm-relogio]').each((index, e) => new Relogio(e))
+
+        //Faz a mesma coisa que a sentenca acima
+        new Relogio($('[wm-relogio]'))
+
+        //insiro mais um elemento na mesma div
+        new Relogio($('[wm-relogio]'))
+
+
+        //manipulando atributos
+
+        //insere mais dois atributos no elemento selecionado pelo atributo 'wm-relogio'
+        $('[wm-relogio]').attr({opa: 1, novo: true})
+        //remove atributo
+        $('[wm-relogio]').removeAttr('opa')
+
+        //$('[wm-relogio]').Attr('opa') ira ler
+        //$('[wm-relogio]').Attr('opa', 3) ira alterar ou incluir
+
+    </script>
+</body>

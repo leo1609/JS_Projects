@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em;
+        }
+
+        #resultado {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #03</h1>
+    <div id='div1'>1 
+        <div id='div3'>Verificando o Related Target</div>
+    </div>
+    <div id='div2'>1</div>
+    <input id='input1' type='text' placeholder='Digite Algo!'>
+    <span id='resultado'></span>
+
+    <script>
+        //
+        function exibirDadosEvento(e){
+            //limpa a div toda vez que a funcao for chamada
+            $('#resultado').empty()
+            const div1 = $('<div>')
+            const div2 = $('<div>')
+
+            $('#resultado').append(div1, div2)
+            //escreve a template dentro da div1
+            div1.append(`target: ${e.target.id}`)
+
+            //relatedTarget é o elemento onde esta inserido o elemento 'e'
+            const rt = e.relatedTarget ? e.relatedTarget.tagName : null
+
+            div1.append(`<br>relatedTarget: ${rt}`)
+
+            div1.append(`<br>type: ${e.type}`)
+            //devolve o numero da tecla na tabla asc
+            div1.append(`<br>which: ${e.which}`)
+
+            //nao consegui fazer o metakey
+            div1.append(`<br>metaKey: ${e.metaKey}`)
+
+            //pega as coordenadas do mouse quando esse passa por cima da div1 e 2
+            div2.append(`pageX: ${e.pageX}`)
+            div2.append(`<br>pageY: ${e.pageY}`)
+            div2.append(`<br>clientX: ${e.clientX}`)
+            div2.append(`<br>clientY: ${e.clientY}`)
+
+            const obs = e.data ? e.data.observador : null
+            div2.append(`<br>observador: ${obs}`)
+
+
+        }
+  
+        //se passar o mouse nas divs dispara a funcao
+        $('#div1, #div2, #div3').on('mouseenter mouseleave',
+        {observador: 'Funciona!!!'}, exibirDadosEvento)
+
+        //se escrever alguma coisa no input é chamada a funcao
+        $('input').keyup(exibirDadosEvento)
+
+
+
+    </script>
+</body>

@@ -1,0 +1,16 @@
+.display{
+    /*diz que display ocupara as 4 primeiras linhas do grid*/
+    grid-column: span 4;
+    background-color: #0004;
+    /*posicao do elemento dos numeros dentro do display*/
+    display: flex;
+    justify-content: flex-end;
+    /*alinha os numeros dentro do elemento*/
+    align-items: center;
+    /* espaco ao redor do elemento dos numeros*/
+    padding: 20px;
+    /*tamanho do numero*/
+    font-size: 2.1em;
+
+    overflow: hidden;
+}

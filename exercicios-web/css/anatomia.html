@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .selector{
+            color: #fff;
+            font-size: 30px;
+            /*valores pre definidos*/
+            text-align: center;
+            /*multiplos valores*/
+            /*shorthand property*/
+            border: solid 5px navy;
+            /*se nao deer certo com helvetico o node escolh sans-sherif*/
+            font-family: Helvetica, sans-serif;
+            /*funções*/
+            /*calc - eu diminui o tamnho da div em 100px*/
+            width: calc(100% - 100px);
+            background-color: rgb(247, 8, 108);
+        }
+
+        /*pseudo-classe*/
+        /*hover - quando o seletor do mouse passar em cima da div
+        ele muda a cor da div*/
+        .selector:hover {
+            background-color: orangered;
+        }
+
+        /*pseudo-elemento*/
+        /*first-size - meche na 1º letra */
+        .selector::first-letter{
+            font-size: 60px;
+            font-weight: bold;
+        }
+        
+        /*padrao de nomenclatura
+        dash-case ou camelCase*/
+
+    </style>
+</head>
+
+<body>
+    <div class="selector">Conteúdo</div>
+</body>
+
+</html>

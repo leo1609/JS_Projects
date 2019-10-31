@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body{
+            margin: 0px;
+            background-color: rgb(209, 202, 202);
+            font-family: 'Oswald', sans-serif;
+        }
+        .cabecalho{
+            height: 60px;
+            background-color: rgb(51, 50, 50); 
+            border-bottom: solid 3px turquoise;      
+        }
+        .logo{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 60px;
+            width: 252px;
+            margin: 0px 35px 0px 0px;
+        }
+        .imagem{
+            height: 46px;
+            margin: 7px 0px 0px 8px;
+        }
+        .menu{
+            position:absolute;
+            left: 290px;
+            top: 0px;
+            margin: 7px;
+            height: 46px;
+            width: 340px;          
+        }
+        .menu ul{
+            margin: 0px;
+            padding: 0px;
+        }
+        .menu li{
+            display: inline-block;
+            padding-top: 7px;
+            width: 80px;
+            height: 30px;
+        }
+        a{
+            font-size: 20px;
+            color: aliceblue;
+            text-decoration: none;
+            padding: 10px 15px 10px 15px;    
+        }
+        /*selected - insere uma classe selected no link 'a' 
+        que foi selecionado. Serve para marca-lo como 
+        selecionado e sera usado no script*/
+        .menu a.selected, .menu a:hover{
+            color: black;
+            background-color: cadetblue;
+        }
+        .autenticacao{
+            position: absolute;
+            padding-top: 10px;
+            right: 0px;
+            width: 200px;
+            height: 38px;
+            margin-top: 7px;
+            text-align: left;
+        }
+        .menu-toggle{
+            position: absolute;
+            right: 10px;
+            top: 20px;   
+        }
+        .botao{
+            border-radius: 25px;
+            margin-left: 5px;
+        }
+        .destaque{
+             background: tomato;
+             box-shadow: 2px 2px 1px #000;
+        }
+        .destaque:active{
+            box-shadow: none;
+          
+        }
+        @media(max-width: 870px){
+            .autenticacao{
+                display: none;
+            }
+        }
+        @media(max-width: 700px){
+            .menu{
+                display: none;
+            }
+        }
+        @media(min-width: 700px){
+            .menu-toggle{
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img class="imagem" src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+
+        <nav class="menu">
+            
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            
+        </nav>
+
+        <button class="menu-toggle">
+                <i class="fa fa-lg fa-bars"></i>    
+        </button>
+
+        <aside class="autenticacao">
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+    
+    <script>
+        //sempre que o hash mudar vai ser chamada essa função
+        window.onhashchange = function(e){
+            //pego tudo da url que esta depois do indice '0' ("#")
+            const oldURL = e.oldURL.split('#')[1] 
+            //mesma coisa mas com url nova
+            const newURL = e.newURL.split('#')[1]
+            //pego o link antigo pelo atributo do link 'a' do 'menu' da url que esta a pagina
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)
+            //pego o link novo que foi clicado 
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)
+            //retiro a classe selected da lista de classes do link 'a' antigo
+            oldLink.classList.remove('selected')
+            //adiciono a classe selected no link 'a' novo
+            newLink.classList.add('selected')
+       }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Galeria de Fotos</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<!--Esta pagina index.html sera a primeira pagina executada pelo webpack pois ela esta no mesma pasta onde esta
+o index.js, entao o webpack procura o index.html na pasta que esta o index.js-->
+<body>
+    <!--Preciso fazer um Js ajax pra injetar o header e o main no body desta pagina. O webpack leu o 
+    'import do arquivo ./js/core/includes', onde o ajax foi programado, no arquivo 'index.js', 
+    e este arquivo includes.js fara a injecao via ajax do header e do main abaixo-->
+    <header wm-include="/pages/template/header.html"></header>
+
+    <main class="bg-light" wm-include="/pages/galery/galery.html"></main>
+
+    <footer class="footer" wm-include="/pages/template/footer.html"></footer>
+    
+    <script src="app.js"></script>
+</body>
+
+</html>

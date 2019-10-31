@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Float</title>
+    <style>
+        /*existem soluções melhores como flex-box do que float e clean*/
+        body {
+            background-color: #222;
+        }
+
+        .c1 {
+            background-color: red;
+            /*faz o elemento flutuar em todo o 1º campo do body*/
+            float: right;
+        }
+
+        .c2 {
+            background-color: green;
+            /*limpa o espaco do verde e o que esta a direta do verde menos o vermelho.*/
+            clear: right;
+            /*pela ordem de execução o clear nao funciona mais, entao o azul ocupa
+            o espaco que estava limpo e o verde sobreescreve em cima do amarelo*/
+            float: left;
+        }
+        
+        .c3 {
+            background-color: blue;
+        }
+
+        .c4 {
+            background-color: orange;
+        }
+
+        div{
+           height: 150px;
+           width: 150px;
+           /*float - flutua os elementos mais a esquerda de cada um */
+           /*float: left*/;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">1</div>
+    <div class="c2">2</div>
+    <div class="c3">3</div>
+    <div class="c4">4</div>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #01</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* ... */
+        div{
+            border: solid 5 px dodgerblue;
+            font-size: 40px;
+            margin: 5px;
+        }
+        .big{
+            font-size: 1.5em;
+        }
+        .flex-container{
+            /*'flex' - usando o flex box*/
+            display: flex;
+            /*o flex trabalhando em coluna vertical*/
+            flex-direction: column;
+            /*volta para a horizontal, o porem 'main axes' é agora
+            o eixo da coluna e reverteu os numeros de 10 para 1*/
+            flex-direction: column-reverse;
+            /*em colunas de numeros invertidos de 10 para 1*/
+            flex-direction: row-reverse;
+            /*é o mesmo que colocar o 'display:flex', é o padrao*/
+            flex-direction: row;
+            width: 50%;
+            
+            /*quebra a linha se nao couber na caixa*/
+            flex-wrap: wrap;
+            /*linha de baixo vai pra cima e a de cima pra baixo*/
+            flex-wrap: wrap-reverse;
+            /*mistura as propriedades direction com wrap
+            é o mesmo que fazer o 'flex-wrap: wrap;'*/
+            flex-flow: row wrap;
+            height: 200px;
+            /*é o mesmo que 'flex-direction: column-reverse;'
+            com ' flex-wrap: wrap;' */
+            flex-flow: column-reverse wrap;
+            /*é o mesmo que 'flex-wrap: wrap;' */
+            flex-flow: row wrap;
+            /*ficam todos as caixas alinhadas na esquerda
+            onde é o start*/
+            justify-content: flex-start;
+            /*fica alinhado nocanto direito onde é o
+            flex end*/
+            justify-content: flex-end;
+            /*alinha as caixas no centro*/
+            justify-content: center;
+            /*coloca espacos na largura inteira da caixa
+            pra  ficar de modo distribuido*/
+            justify-content: space-around;
+            /*o justify funciona com os direction e flex*/
+            flex-direction: row-reverse;
+            /*coloca espaco somente entre e nao ao redor dos elementos*/
+            justify-content: space-between;
+
+            /*propriedades do cross axis*/
+            height: 400px;
+            /*padrao - estica*/
+            align-items: stretch;
+            /*alinha as caixas pela linha de base das fontes*/
+            align-items: baseline;
+            /*alinha pelos topos das caixas*/
+            align-items: flex-start;
+            /*alinha por baixo das caixas*/
+            align-items: flex-end;
+            /*alinha pelo centro dos elementos*/
+            align-items: center;
+
+            /*mais de uma linha*/
+            /*todas as linhas iniciam no start da tela*/
+            align-content: flex-start;
+            /*alinha no final do container*/
+            align-content: flex-end;
+            /*alinha no centro da tela*/
+            align-content: center;
+            /*alinha deixando um espaco no centro da tela*/
+            align-content: space-around;
+            /*alinha deixando espaco no centro sem deixar 
+            espaco ao lado das caixas*/
+            align-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel big">3</div>
+        <div class="tag nolabel">4</div>
+        <div class="tag nolabel">5</div>
+        <div class="tag nolabel">6</div>
+        <div class="tag nolabel">7</div>
+        <div class="tag nolabel">8</div>
+        <div class="tag nolabel">9</div>
+        <div class="tag nolabel">10</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

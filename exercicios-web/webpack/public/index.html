@@ -1,0 +1,23 @@
+<!--se eu escrever html e selecionar 'html:5', o html criara toda
+a estrutura principal de codigo abaixo-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Capitulo Webpack</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <button class="botao">teste</button>
+    <script src="principal.js"> </script>
+</body>
+</html>
+
+<!--    Para ver a execucao deste html no browser é so clicar com botao direito em index.js e
+abrir o icone index. Percebe-se que nao existe nehum link css neste html,
+no entanto ele foi importado pelo webpack pelo comando 'style-loader' no arquivo 'webpack.config.js'.
+
+        Fiz um outro exercicio que precisei importar o link css aqui, onde crio o arquivo estilo.css na pasta 'public'
+pelo comando 'MiniCssExtractPlugin.loader' no arquivo 'webpack.config.js'. -->

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /*para saber mais sobre o que é especificidade css entre no link abaixo*/
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /*
+            em linhas gerais...
+            1 - regra com o !important, evite usar o !important
+            2 - seletores mais especificos
+            3 - ultima regra processada no caso de (empate)
+        */
+        
+        /* este é mais especifico que os debaixo, ele ira sobrescrever
+        sobre os outros atributos das outras classes*/
+        p.observacao{
+            padding: 2px;
+            background: linear-gradient(to right, red, yellow)
+        }
+
+        /*'.observacao' é mais especifico que que 'p' portanto 
+        prevalecera sobre 'p'*/
+        .observacao{
+            background-color: #5f5;
+            border: dashed 5px;
+            /*'!important' quebra a regra da especificidade*/
+            padding: 200px !important;
+            font-size: 40px;
+        }
+
+        p{
+            background-color: #aaa;
+             
+        }
+
+        
+        
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

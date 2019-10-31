@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando CSS</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando CSS</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='resultado'></div>
+    <script>
+        //pega a fonte da  div1
+        const fonte = $('#div1').css('font-family')
+        $('#resultado').append(`Fonte é: ${fonte}`)
+
+        //altero o tamanho da fonte
+        $('#div1').css('font-size', '3em')
+        //altera fonte e coloca cor
+        $('#div1').css({'font-size': '3.5em', 'color': 'yellow'})
+
+        $('#div1').css('font-size',function(){
+            return `${2 * 2}em`
+        })
+
+        $('#div2').addClass('destaque')
+
+        const temclasse = $('#div2').hasClass('destaque')
+        //<br> pula linha
+        $('#resultado').append(`<br>Tem classe? ${temclasse}`)
+
+        $('#div2').removeClass('destaque')
+
+        //toggle alterna inclusao e exclusao
+        //se nao tem classe 'destaque', ele adiciona
+        $('#div2').toggleClass('destaque')
+        //como acima tem 'destaque', entao egora ele exclui
+        $('#div2').toggleClass('destaque')
+    </script>
+</body>

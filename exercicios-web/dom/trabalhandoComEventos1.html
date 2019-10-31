@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!--tenho que escrever a palavra 'event' como paramentro, 
+senao nao ira passar o evento para a funcao 'navegarem5s()'-->
+    <!--<a href="https://google.com.br" onclick="navegarem5s(event)">Google</a>-->
+
+    <a esperando-5-segundos href="https://google.com.br" >Google</a>
+    </div>
+    <script>
+        // 
+        function navegarem5s(e){
+            //permite que o comportamento padrao do href nao ocorra
+            //e nao vai para o endereco do google
+            e.preventDefault()
+            console.log('saindo em 5 sec.....')
+
+            setTimeout(() => {
+                //'e' é o evento que dentro dele tem uma propriedade 'target',
+                //que é o elemento HTML que disparou o evento
+                const link = e.target
+                //link.href - pega o endereco do href dentro do link 'a'
+                //window.location.href - é o endereço do link deste exercicio
+                //neste caso D:/UDEMY/exercicios-web/dom/trabalhandoComEventos1.htm
+                //abaixo eu substitui o endereco deste exercicio pelo do google
+                //quando o evento desta funcao for disparado
+                window.location.href = link.href
+                
+            }, 5000)
+        }
+        //desta forma nao preciso escrever o onclick na tag 'a', ela
+        //é acionada abaixo, porem olhando para a tag 'a' sem o onclick
+        //nao da para saber se a tag 'a' esta sendo manipulado por um 
+        //codigo js
+        //const a = document.querySelector('a')
+        //a.onclick = navegarem5s
+        //melhor dos mundos porque atraves do atributo que criei consigo
+        //identificar que tem uma manipulacao do js e fica mais manutenivel
+        //do que colocar o onclick na tag, pois fica tudo no js
+        const a = document.querySelector('[esperando-5-segundos]')
+        a.onclick = navegarem5s
+    </script>
+</body>

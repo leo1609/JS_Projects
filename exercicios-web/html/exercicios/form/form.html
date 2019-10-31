@@ -1,0 +1,55 @@
+<h1>Formulario</h1>
+
+<form method="POST">
+    <!--o hidden é um input escondido que atribui o id 3-->
+    <input type="hidden" name="id" value="3">
+    <input type="text" name="nome">
+    <input type="password" name="senha" >
+    <textarea name="biografia" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin">Adim
+        <input type="radio" name="tipo" value="regular">Regular
+        <input type="radio" name="tipo" value="professor">Professor
+    </div>
+    <div>
+        <input type="checkbox" name="ativo">Ativo
+    </div>
+    <div>
+        <select name="estado">
+            <option value="">Estado</option>
+            <option value="AC">Acre</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceara</option>
+        </select>
+    </div>
+    <div>
+        <select name="interesses" multiple size="5">
+            <option value="">nenhum</option>
+            <option value="JAVA">Java</option>
+            <option value="PHP">Php</option>
+            <option value="PYTHON">Python</option>
+            <option value="GO">Go</option>
+            <option value="C">C</option>
+        </select>
+    </div>
+    <button formaction="http://localhost:3003/usuarios">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3">Alterar</button>
+</form>
+
+<style>
+    input, textarea{
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type=radio],
+    input[type=checkbox]{
+        display:inline;
+        
+    }
+    select[name=estado], 
+    select[name=interesses]{
+        margin-bottom: 10px;
+    }
+
+</style>

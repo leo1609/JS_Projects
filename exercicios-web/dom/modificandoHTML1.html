@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+
+
+    <script>
+        // peguei o body
+        const body = document.querySelector('body')
+        //criei uma div
+        const div1 = document.createElement('div')
+        //adicionei uma classe do endereco estilo.css
+        div1.classList.add('destaque')
+        //crei uma classe na div1
+        div1.classList.add('destaque1')
+        //escrevi um texto na div
+        div1.innerHTML = 'Primeiro'
+        //
+        const div2 = document.createElement('div')
+        //criei, coloquei valor e inseri uma classe na div2 
+        div2.setAttribute('wn-atributo', 'valor')
+        //
+        div2.innerHTML = 'segundo'
+        //
+        const p = document.createElement('p')
+        p.innerHTML = 'terceiro'
+        const div3 = document.createElement('div')
+        //appendchild - insero o 'p' dentro da 'div3' como ultimo elemento
+        div3.appendChild(p)
+
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+        //desta forma eu crio um elemento chamado antes
+        //const texto = document.createElement('antes')
+        //desta forma subistitui o paragrafo p 'terceiro' pela palavra 'antes'
+        //div3.innerHTML = 'antes'
+        //desta forma criei um texto em formato textnode para poder
+        //ser inserido no html, pois string nao pode
+        const texto = document.createTextNode('antes....')
+        //inseri na div3 o texto antes filho '0' da div
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        //clona o a div3. 'true' clona com os filhos, 'false clona sem os filhos'
+        const div4 = div3.cloneNode(true)
+        body.appendChild(div4)
+        //as cores das divs estao sendo colocadas eplo css do endereco 
+        //estilo.css por isso que a cor da div4 estava diferente antes de 
+        //exluir a div3
+        body.removeChild(div3)
+    </script>
+</body>
+
+</html>
